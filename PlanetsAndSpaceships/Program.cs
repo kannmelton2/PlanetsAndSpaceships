@@ -56,6 +56,23 @@ namespace PlanetsAndSpaceships
 
             // remove the best planet, lame
             planetList.Remove("Pluto");
+
+            // declare the spacecrafts
+            // key is craft's name, value is a List of planets (strings)
+            var spacecrafts = new Dictionary<string, List<string>>()
+            {
+                {"Messenger", new List<string>() {"Mercury", "Venus"} },
+                {"Venus Express", new List<string>() {"Venus"} }
+            };
+
+            foreach (var (spacecraft, planets) in spacecrafts)
+            {
+                Console.WriteLine($"{spacecraft}");
+                foreach (var planet in planets)
+                {
+                    Console.WriteLine($"{planet}");
+                }
+            }
         }
     }
 }
