@@ -62,17 +62,32 @@ namespace PlanetsAndSpaceships
             var spacecrafts = new Dictionary<string, List<string>>()
             {
                 {"Messenger", new List<string>() {"Mercury", "Venus"} },
-                {"Venus Express", new List<string>() {"Venus"} }
+                {"Venus Express", new List<string>() {"Venus"} },
+                {"2001 Mars Odyssey", new List<string>() {"Mars"} },
+                {"Phoenix", new List<string>() {"Mars"} },
+                {"Juno", new List<string>() {"Jupiter"} },
+                {"Ulysses", new List<string>() {"Jupiter"} },
+                {"Pioneer 11", new List<string>() {"Jupiter, Saturn"} },
+                {"Voyager 2", new List<string>() {"Jupiter", "Saturn", "Uranus", "Neptune"} },
+                {"New Horizons", new List<string>() {"Pluto"} }
             };
 
-            foreach (var (spacecraft, planets) in spacecrafts)
+            foreach (var planet in planetList)
             {
-                Console.WriteLine($"{spacecraft}");
-                foreach (var planet in planets)
+                var planetVisitedBy = new List<string>();
+                foreach (var spacecraft in spacecrafts)
                 {
-                    Console.WriteLine($"{planet}");
+                    if (spacecraft.Value.Contains(planet))
+                    {
+                        planetVisitedBy.Add(spacecraft.Key);
+                    }
                 }
+                var spacecraftList = string.Join(", ", planetVisitedBy);
+
+                Console.WriteLine($"{planet}: {spacecraftList}");
             }
+
+
         }
     }
 }
